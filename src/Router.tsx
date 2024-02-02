@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
-import Animal from "./pages/Animal";
+import Animals from "./pages/Animals";
 import Details from "./pages/Details";
 
 export const router = createBrowserRouter([
@@ -12,8 +12,8 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home />, index: true },
-      { path: "/animal", element: <Animal /> },
-      { path: "/animal/:animalId", element: <Details /> },
+      { path: "/animals", element: <Animals /> },
+      { path: "/animals/:animalId", element: <Details /> },
     ],
   },
 ]);
