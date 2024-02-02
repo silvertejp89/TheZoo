@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+
+.animal-container {
+  border: solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.img-container {
+  width: 200px;
+  height: auto;
+}
+
+img {
+  width: 100%;
+}
+
+.home {
+  background-image: url("https://images.wagwalkingweb.com/media/articles/dog/why-is-my-dog-always-hungry/why-is-my-dog-always-hungry.jpg?auto=compress&fit=max&width=640");
+  background-color: #cccccc; /* Används om bilden inte är tillgänglig */
+  height: 500px; /* Du måste ange en specificerad höjd */
+  background-position: center; /* Centrera bilden */
+  background-repeat: no-repeat; /* Upprepa inte bilden */
+  background-size: cover; /* Ändra storleken på bakgrundsbilden för att täcka hela behållaren */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Justera textfärgen baserat på din bild */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Lägg till skugga för bättre synlighet av texten på bilden */
+}

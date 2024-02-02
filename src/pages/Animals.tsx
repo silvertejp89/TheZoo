@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import IAnimal from "../models/IAnimal";
 import getAnimals from "../services/animalService";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 export const Animals = () => {
   const [animals, setAnimals] = useState<IAnimal[]>(
@@ -32,11 +33,12 @@ export const Animals = () => {
 
   return (
     <>
-      <h1>Jättemassa många djur</h1>
       {animals?.map((animal) => (
-        <>
+        <div className="animal-container">
+          <div className="img-container">
+            <img src={animal.imageUrl} alt="image of animal" />
+          </div>
           <h3>{animal.name}</h3>
-          <p>{animal.id}</p>
           <button
             onClick={() => {
               navigate("/animals/" + animal.id);
@@ -44,7 +46,7 @@ export const Animals = () => {
           >
             Läs mer
           </button>
-        </>
+        </div>
       ))}
     </>
   );

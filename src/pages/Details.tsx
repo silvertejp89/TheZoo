@@ -28,7 +28,10 @@ export const Details = () => {
 
   return (
     <>
-      <h1>Details: {animal.name}</h1>;
+      <h1>{animal.name}</h1>
+      <p>{animal.longDescription}</p>
+      <p>{animal.lastFed}</p>
+      <button>Mata {animal.name}</button>
     </>
   );
 };

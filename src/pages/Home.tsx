@@ -1,5 +1,7 @@
+import "../App.css";
+
 export const Home = () => {
-  return <h1>Hem</h1>;
+  return <div className="home">Mata djuren!</div>;
 };
 
 export default Home;
