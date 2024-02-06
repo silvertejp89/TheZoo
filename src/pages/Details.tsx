@@ -2,11 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import IAnimal from "../models/IAnimal";
 
-//TODO: få in listan från localstorage, loopa och visa description och state. knapp för att ändra state.
-
 export const Details = () => {
   const { animalId } = useParams();
-  const [animal, setAnimal] = useState<IAnimal | null>(null);
+  const [animal, setAnimal] = useState<IAnimal>();
 
   //useEffect, hämta listan från localstorage
   useEffect(() => {
@@ -22,6 +20,33 @@ export const Details = () => {
     setAnimal(selectedAnimal);
   }, [animalId]);
 
+  const feedAnimal = () => {
+    const feedingTime = new Date();
+    if (animal) {
+      setAnimal({
+        ...animal,
+        isFed: true,
+        lastFed: feedingTime.toLocaleString(),
+      });
+
+      const listFromLS: IAnimal[] = JSON.parse(
+        localStorage.getItem("animalList") || "[]"
+      );
+      const updatedList = listFromLS.map((currentAnimal) =>
+        currentAnimal.id === animal.id
+          ? {
+              ...currentAnimal,
+              isFed: true,
+              lastFed: feedingTime.toLocaleString,
+            }
+          : currentAnimal
+      );
+      localStorage.setItem("animalList", JSON.stringify(updatedList));
+    }
+  };
+
+  //--------------------------------------------------------
+
   if (!animal) {
     return <p>Loading...</p>;
   }
@@ -30,10 +55,16 @@ export const Details = () => {
     <>
       <h1>{animal.name}</h1>
       <p>{animal.longDescription}</p>
+      <p>{animal.isFed.toString()}</p>
       <p>{animal.lastFed}</p>
-      <button>Mata {animal.name}</button>
+      <button onClick={feedAnimal} disabled={animal.isFed}>
+        Mata {animal.name}
+      </button>
     </>
   );
 };
+
+{
+}
 
 export default Details;

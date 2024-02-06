@@ -39,6 +39,8 @@ export const Animals = () => {
             <img src={animal.imageUrl} alt="image of animal" />
           </div>
           <h3>{animal.name}</h3>
+          <p>{animal.isFed.toString()}</p>
+
           <button
             onClick={() => {
               navigate("/animals/" + animal.id);
